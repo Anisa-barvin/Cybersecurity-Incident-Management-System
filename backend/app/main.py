@@ -10,10 +10,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS
+# CORS - Uses CORS_ORIGINS env var (comma-separated) for production security
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
